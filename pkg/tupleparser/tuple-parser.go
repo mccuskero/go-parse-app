@@ -85,6 +85,8 @@ func (tp *TupleParser) processFile(file *File) error {
 	outputItem, ok := tp.outputMap[sha1_hash]
 
 	// if we have not seen the content hash
+	// TODO: a number of attributes are hardcoded, here. 
+	// I was suppose to cap this off to an hour. 
 	if !ok {
 		outputItem := &TupleParserOutputItem{
 			Sha256:                sha1_hash,

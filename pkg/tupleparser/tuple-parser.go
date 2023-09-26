@@ -135,7 +135,9 @@ func (tp *TupleParser) Parse(in string) error {
 	}
 
 	// process the files
-	tp.process()
+	if err := tp.process(); err != nil {
+		fmt.Println("Error parsing input json: ", err.Error())
+	}
 
 	tp.InputJsonStr = in
 

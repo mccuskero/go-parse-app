@@ -38,8 +38,15 @@ func TestTupleParserForErrors(t *testing.T) {
 	}`
 
 	tp := NewTupleParser()
-	tp.Parse(inputJson)
-	tp.PrintOutput()
+
+	if err := tp.Parse(inputJson); err != nil {
+		t.Errorf("Error parsing input json")
+		return 
+	}
+
+	if err := tp.PrintOutput(); err != nil {
+		t.Errorf("Error printing output")
+	}
 
 	assert.Equal(t, 2, tp.TupleParserOutput.Errors)
 }
